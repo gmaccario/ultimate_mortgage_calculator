@@ -6,7 +6,6 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ))
 }
 
 include('ultimate_mortgage_calculator.php');
-include('include/constants.php');
 
 delete_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEBUG );
 delete_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_SETTINGS_FIELDS );

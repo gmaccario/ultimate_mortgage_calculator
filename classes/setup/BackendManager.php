@@ -6,11 +6,11 @@
  * @author G.Maccario <g_maccario@hotmail.com>
  */
 
-namespace DVNWPF\Setup\Classes;
+namespace UMC\Setup\Classes;
 
-use DVNWPF\Controller\Classes\Controller;
+use UMC\Controller\Classes\Controller;
 
-if(!interface_exists('DVNWPF\Setup\Classes\iBackendManager'))
+if(!interface_exists('UMC\Setup\Classes\iBackendManager'))
 {
     interface iBackendManager
     {
@@ -18,11 +18,11 @@ if(!interface_exists('DVNWPF\Setup\Classes\iBackendManager'))
         public function backendEnqueue() : void;
         public function customActionLinks(array $links) : ?array;
         public function backendMenu() : void;
-        public function whenDevonWPFStart() : void;
+        public function whenUltimateMortgageCalculatorStart() : void;
     }
 }
 
-if( !class_exists('\DVNWPF\Setup\Classes\BackendManager'))
+if( !class_exists('\UMC\Setup\Classes\BackendManager'))
 {
     class BackendManager extends Manager
 	{		
@@ -76,8 +76,8 @@ if( !class_exists('\DVNWPF\Setup\Classes\BackendManager'))
 			/*
 			 * Add basic static files
 			 */
-			wp_enqueue_style('devon_wpf-admin-css', sprintf( '%s%s', DEVON_WPF_URL, '/assets/css/backend.css' ), array(),  '1.0');
-			wp_enqueue_script('devon_wpf-admin-js', sprintf( '%s%s', DEVON_WPF_URL, '/assets/js/backend.js' ), array( 'jquery' ),  '1.0', true);
+			wp_enqueue_style('ultimate_mortgage_calculator-admin-css', sprintf( '%s%s', ULTIMATE_MORTGAGE_CALCULATOR_URL, '/assets/css/backend.css' ), array(),  '1.0');
+			wp_enqueue_script('ultimate_mortgage_calculator-admin-js', sprintf( '%s%s', ULTIMATE_MORTGAGE_CALCULATOR_URL, '/assets/js/backend.js' ), array( 'jquery' ),  '1.0', true);
 		}
 		
 		/**
@@ -97,7 +97,7 @@ if( !class_exists('\DVNWPF\Setup\Classes\BackendManager'))
 				return array_merge($links, array( 
 					sprintf( '<a href="%s">%s</a>', 
 					    admin_url( 'admin.php?page=' . $this->controller->getCommon()->getConstant( $pages[0][ 'slug' ] )), 
-						__( 'Settings', DEVON_WPF_L10N ) 
+						__( 'Settings', ULTIMATE_MORTGAGE_CALCULATOR_L10N ) 
 					)
 				));
 			}
@@ -127,19 +127,19 @@ if( !class_exists('\DVNWPF\Setup\Classes\BackendManager'))
 						
 						/* TRICK: https://kylebenk.com/change-title-first-submenu-page/ */
 						add_menu_page(
-								__( DEVON_WPF_NAME, DEVON_WPF_L10N ),
-								__( DEVON_WPF_NAME, DEVON_WPF_L10N ),
+								__( ULTIMATE_MORTGAGE_CALCULATOR_NAME, ULTIMATE_MORTGAGE_CALCULATOR_L10N ),
+								__( ULTIMATE_MORTGAGE_CALCULATOR_NAME, ULTIMATE_MORTGAGE_CALCULATOR_L10N ),
 								'manage_options',
 						    $this->controller->getCommon()->getConstant( $page[ 'slug' ] ),
 								array( $this->controller, $page[ 'attributes' ][ 'callback' ] ),
-								'dashicons-admin-site'
+								'dashicons-chart-line'
 						);
 					}
 
 					add_submenu_page(
 						$main_page,
-						__( $page[ 'name' ], DEVON_WPF_L10N ),
-						__( $page[ 'name' ], DEVON_WPF_L10N ),
+						__( $page[ 'name' ], ULTIMATE_MORTGAGE_CALCULATOR_L10N ),
+						__( $page[ 'name' ], ULTIMATE_MORTGAGE_CALCULATOR_L10N ),
 						'manage_options',
 					    $this->controller->getCommon()->getConstant( $page[ 'slug' ] ),
 						array( $this->controller, $page[ 'attributes' ][ 'callback' ] )
@@ -149,14 +149,14 @@ if( !class_exists('\DVNWPF\Setup\Classes\BackendManager'))
 		}
 		
 		/**
-		 * @name whenDevonWPFStart
+		 * @name whenUltimateMortgageCalculatorStart
 		 *
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function whenDevonWPFStart() : void
+		public function whenUltimateMortgageCalculatorStart() : void
 		{
-			register_setting( DEVON_WPF_OPT_SETTINGS_FIELDS, DEVON_WPF_OPT_DEBUG );
+			register_setting( ULTIMATE_MORTGAGE_CALCULATOR_OPT_SETTINGS_FIELDS, ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEBUG );
 			
 			/*
 			WordPress Settings API

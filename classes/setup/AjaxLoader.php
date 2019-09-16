@@ -1,11 +1,11 @@
 <?php
 
-namespace DVNWPF\Setup\Classes;
+namespace UMC\Setup\Classes;
 
-use DVNWPF\General\Classes\Basic;
-use DVNWPF\Controller\Classes\Controller;
+use UMC\General\Classes\Basic;
+use UMC\Controller\Classes\Controller;
 
-if(!interface_exists('DVNWPF\Setup\Classes\iAjaxLoader'))
+if(!interface_exists('UMC\Setup\Classes\iAjaxLoader'))
 {
     interface iAjaxLoader
     {
@@ -14,7 +14,7 @@ if(!interface_exists('DVNWPF\Setup\Classes\iAjaxLoader'))
     }
 }
 
-if( !class_exists('\DVNWPF\Setup\Classes\AjaxLoader'))
+if( !class_exists('\UMC\Setup\Classes\AjaxLoader'))
 {
     /**
      * @name AjaxLoader

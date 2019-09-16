@@ -1,10 +1,10 @@
 <?php
 
-namespace DVNWPF\Setup\Classes;
+namespace UMC\Setup\Classes;
 
-use DVNWPF\Controller\Classes\Controller;
+use UMC\Controller\Classes\Controller;
 
-if(!interface_exists('DVNWPF\Setup\Classes\iLoader'))
+if(!interface_exists('UMC\Setup\Classes\iLoader'))
 {
     interface iLoader
     {
@@ -15,7 +15,7 @@ if(!interface_exists('DVNWPF\Setup\Classes\iLoader'))
     }
 }
 
-if(!class_exists('\DVNWPF\Setup\Classes\Loader'))
+if(!class_exists('\UMC\Setup\Classes\Loader'))
 {
     /**
      * @name Loader
@@ -83,7 +83,7 @@ if(!class_exists('\DVNWPF\Setup\Classes\Loader'))
 		 */
 		public function adminInit() : void
 		{
-		    $this->controllerManager->whenDevonWPFStart();
+		    $this->controllerManager->whenUltimateMortgageCalculatorStart();
 		}
 		
 		/**
@@ -116,7 +116,7 @@ if(!class_exists('\DVNWPF\Setup\Classes\Loader'))
 		    add_action( 'admin_menu', array($this->controllerManager, 'backendMenu'));
 		    add_action( 'admin_enqueue_scripts', array($this->controllerManager, 'backendEnqueue'));
 		    
-		    add_filter( 'plugin_action_links_' . DEVON_WPF_BASENAME, array($this->controllerManager, 'customActionLinks' ));
+		    add_filter( 'plugin_action_links_' . ULTIMATE_MORTGAGE_CALCULATOR_BASENAME, array($this->controllerManager, 'customActionLinks' ));
 		    
 		    $this->automaticLoadingOfHooksFiltersAndShortcodes();
 		}

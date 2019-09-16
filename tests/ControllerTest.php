@@ -2,8 +2,8 @@
 declare(strict_types = 1);
 
 use PHPUnit\Framework\TestCase;
-use DVNWPF\General\Classes\Common;
-use DVNWPF\Controller\Classes\Controller;
+use UMC\General\Classes\Common;
+use UMC\Controller\Classes\Controller;
 
 require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
@@ -26,7 +26,7 @@ final class ControllerTest extends TestCase
 
         $controller = new Controller($common);
 
-        $this->assertInstanceOf('\DVNWPF\General\Classes\Common', $controller->getCommon());
+        $this->assertInstanceOf('\UMC\General\Classes\Common', $controller->getCommon());
     }
 
     /**

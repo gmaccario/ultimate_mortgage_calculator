@@ -6,11 +6,11 @@
  * @author G.Maccario <g_maccario@hotmail.com>
  */
 
-namespace DVNWPF\Setup\Classes;
+namespace UMC\Setup\Classes;
 
-use DVNWPF\Controller\Classes\Controller;
+use UMC\Controller\Classes\Controller;
 
-if(!interface_exists('DVNWPF\Setup\Classes\iFrontendManager'))
+if(!interface_exists('UMC\Setup\Classes\iFrontendManager'))
 {
     interface iFrontendManager
     {
@@ -19,7 +19,7 @@ if(!interface_exists('DVNWPF\Setup\Classes\iFrontendManager'))
     }
 }
 
-if(!class_exists('\DVNWPF\Setup\Classes\FrontendManager'))
+if(!class_exists('\UMC\Setup\Classes\FrontendManager'))
 {
     class FrontendManager extends Manager
 	{
@@ -56,8 +56,8 @@ if(!class_exists('\DVNWPF\Setup\Classes\FrontendManager'))
 			/*
 			 * Add basic static files
 			 */
-			wp_enqueue_style( 'devon_wpf-frontend-css', sprintf( '%s%s', DEVON_WPF_URL, '/assets/css/frontend.css' ), array(), '1.0' );
-			wp_enqueue_script( 'devon_wpf-frontend-js', sprintf( '%s%s', DEVON_WPF_URL, '/assets/js/frontend.js' ), array( 'jquery' ), '1.0', true );
+			wp_enqueue_style( 'ultimate_mortgage_calculator-frontend-css', sprintf( '%s%s', ULTIMATE_MORTGAGE_CALCULATOR_URL, '/assets/css/frontend.css' ), array(), '1.0' );
+			wp_enqueue_script( 'ultimate_mortgage_calculator-frontend-js', sprintf( '%s%s', ULTIMATE_MORTGAGE_CALCULATOR_URL, '/assets/js/frontend.js' ), array( 'jquery' ), '1.0', true );
 		}
 		
 		/**

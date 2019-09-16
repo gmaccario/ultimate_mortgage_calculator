@@ -15,8 +15,8 @@ return [
 		    'additional_css' => [],
 			'pages'=> [
 				[
-				    'name'=> 'Devon W.P.F. (WordPress Plugin Framework) Backend name', 
-    				'slug'=> 'devon_wpf_menu_page', 
+				    'name'=> 'Ultimate Mortgage Calculator Backend name', 
+    				'slug'=> 'ultimate_mortgage_calculator_menu_page', 
     				'attributes'=> [
     					'callback'=> 'configuration', 
     					'tabs'=> [ 
@@ -25,11 +25,6 @@ return [
     							'slug' => 'welcome', 
     							'callback' => 'displayTabWelcome' 
     						],
-    					    [
-    					        'name' => 'Documentation',
-    					        'slug' => 'documentation',
-    					        'callback' => 'displayTabDocumentation'
-    					    ],
     						[ 
     							'name' => 'Configuration', 
     							'slug' => 'configuration', 
@@ -44,11 +39,11 @@ return [
 			'hooks'=> [],
 			'filters'=> [],
 			'shortcodes'=> [
-				['default_template_shortcode'=> 'default_template']
+				['ultimate_mortgage_calculator'=> 'get_mortgage_shortcode']
 			],
-			'ajax'=> [ 'echo_foo' ],
+			'ajax'=> [ 'get_mortgage_calculator_results' ],
 			'routes'=> [],
-		    'additional_js' => [],
+		    'additional_js' => [ 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js' ],
 		    'additional_css' => []
 		]
 	],

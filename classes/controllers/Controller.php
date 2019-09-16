@@ -1,11 +1,11 @@
 <?php
 
-namespace DVNWPF\Controller\Classes;
+namespace UMC\Controller\Classes;
 
-use DVNWPF\General\Classes\Basic;
-use DVNWPF\General\Classes\Common;
+use UMC\General\Classes\Basic;
+use UMC\General\Classes\Common;
 
-if(!interface_exists('DVNWPF\Controller\Classes\iController'))
+if(!interface_exists('UMC\Controller\Classes\iController'))
 {
     interface iController
     {
@@ -14,7 +14,7 @@ if(!interface_exists('DVNWPF\Controller\Classes\iController'))
     }
 }
 
-if(!class_exists('\DVNWPF\Controllers\Classes\Controller'))
+if(!class_exists('\UMC\Controllers\Classes\Controller'))
 {
     /**
      * @name Controller

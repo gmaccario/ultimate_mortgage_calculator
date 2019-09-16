@@ -1,9 +1,9 @@
 {
 	"autoload": {
 		"psr-4": {
-			"DVNWPF\\Controller\\Classes\\": "classes/controllers/",
-			"DVNWPF\\General\\Classes\\": "classes/general/",
-			"DVNWPF\\Setup\\Classes\\": "classes/setup/"
+			"UMC\\Controller\\Classes\\": "classes/controllers/",
+			"UMC\\General\\Classes\\": "classes/general/",
+			"UMC\\Setup\\Classes\\": "classes/setup/"
 		}
 	},
     "require-dev": {

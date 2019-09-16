@@ -1,14 +1,1 @@
-.devon_wpf table {
-  	border-collapse: collapse;
-  	width: 100%;
-}
-
-.devon_wpf td, th {
-  	border: 1px solid #dddddd;
-  	text-align: left;
-	padding: 8px;
-}
-
-.devon_wpf tr:nth-child(even) {
-	background-color: #dddddd;
-}
+.ultimate_mortgage_calculator table{border-collapse:collapse;width:50%}.ultimate_mortgage_calculator td,th{border:1px solid #ddd;text-align:left;padding:8px}.ultimate_mortgage_calculator tr:nth-child(even){background-color:#ddd}.ultimate_mortgage_calculator .input{display:block;clear:both;width:500px}.ultimate_mortgage_calculator h4{width:200px;float:left}.ultimate_mortgage_calculator .input .element{width:200px;float:left}.ultimate_mortgage_calculator .submit{clear:both}

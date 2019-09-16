@@ -1,10 +1,10 @@
 <?php 
 
-namespace DVNWPF\General\Classes;
+namespace UMC\General\Classes;
 
-use DVNWPF\Controller\Classes\iController;
+use UMC\Controller\Classes\iController;
 
-if(!interface_exists('DVNWPF\General\Classes\iCommon'))
+if(!interface_exists('UMC\General\Classes\iCommon'))
 {
     interface iCommon
     {
@@ -15,6 +15,8 @@ if(!interface_exists('DVNWPF\General\Classes\iCommon'))
         public function renderView(iController $controller, string $view, array $params) : ?string;
         public function getConstant(string $sz_supposed_constant = '') : string;
         public function errorNoticeDependency() : void;
+        public function get_currency_entity( string $currency_symbol ) : string;
+        public function get_rgba_from_hex( string $hex ) : string;
         //public function uploadFile(string $dir = '', array $f = []) : ?bool;
         //public function uploadFiles(string $dir = '', array $f = []) : ?bool;
     }
@@ -68,7 +70,7 @@ if(!class_exists('\General\Classes\Common'))
 		{
 		    if( empty($this->debug) && function_exists( 'get_option' ))
 		    {
-		        $this->debug = ( get_option( DEVON_WPF_OPT_DEBUG ) ) ? get_option( DEVON_WPF_OPT_DEBUG ) : false;
+		        $this->debug = ( get_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEBUG ) ) ? get_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEBUG ) : false;
 		        
 		        return true;
 		    }
@@ -84,7 +86,7 @@ if(!class_exists('\General\Classes\Common'))
 		 */
 		protected function setConfig() : bool
 		{
-		    $path = DEVON_WPF_DIR_PATH . 'config' . DIRECTORY_SEPARATOR . 'config.php';
+		    $path = ULTIMATE_MORTGAGE_CALCULATOR_DIR_PATH . 'config' . DIRECTORY_SEPARATOR . 'config.php';
 		    
 		    if( empty( $this->config ) && file_exists( $path ))
 		    {
@@ -146,7 +148,7 @@ if(!class_exists('\General\Classes\Common'))
 		            require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		        }
 		        
-		        deactivate_plugins( DEVON_WPF_BASENAME );
+		        deactivate_plugins( ULTIMATE_MORTGAGE_CALCULATOR_BASENAME );
 		    }
 		    catch ( \Error $e ) {
 		        echo $e->getMessage();
@@ -175,14 +177,14 @@ if(!class_exists('\General\Classes\Common'))
 			switch( $this->getNameClass( $controller ))
 			{
 				case 'Backend':
-				    $filename =  DEVON_WPF_DIR_PATH . 'templates' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . $view . '.php';
+				    $filename =  ULTIMATE_MORTGAGE_CALCULATOR_DIR_PATH . 'templates' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . $view . '.php';
 				    if( file_exists( $filename ))
 				    {
 				        include( $filename );
 				    }
 					break;
 				case 'Frontend':
-				    $filename =  DEVON_WPF_DIR_PATH . 'templates' . DIRECTORY_SEPARATOR . 'frontend' . DIRECTORY_SEPARATOR . $view . '.php';
+				    $filename =  ULTIMATE_MORTGAGE_CALCULATOR_DIR_PATH . 'templates' . DIRECTORY_SEPARATOR . 'frontend' . DIRECTORY_SEPARATOR . $view . '.php';
 					if( file_exists( $filename ))
 					{
 					    ob_start();
@@ -305,11 +307,11 @@ if(!class_exists('\General\Classes\Common'))
 		 */
 		public function errorNoticeDependency() : void
 		{
-		    $error = sprintf("Missing Dependency! %s needs %s in order to work correctly.", DEVON_WPF_BASENAME, $this->missing_dependency);
+		    $error = sprintf("Missing Dependency! %s needs %s in order to work correctly.", ULTIMATE_MORTGAGE_CALCULATOR_BASENAME, $this->missing_dependency);
 		    
 		    ?>
     		    <div class="error notice">
-                    <p><?php echo __( $error, DEVON_WPF_L10N ); ?></p>
+                    <p><?php echo __( $error, ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></p>
                 </div>
 		    <?php 
 		}
@@ -348,6 +350,52 @@ if(!class_exists('\General\Classes\Common'))
 		     * @note During the installation
 		     * */
 		    return true;
+		}
+		
+		/**
+		 * get_currency_entity
+		 *
+		 * @author G.Maccario <g_maccario@hotmail.com>
+		 * @return string
+		 */
+		public function get_currency_entity( ?string $currency_symbol ) : string
+		{
+		    switch( $currency_symbol )
+		    {
+		        case 'EUR': return '&#8364;'; break;
+		        case 'AUD': return '&#36;'; break;
+		        case 'CAD': return '&#36;'; break;
+		        case 'GBP': return '&#163;'; break;
+		        case 'USD': return '&#36;'; break;
+		        case 'CHF': return '&#67;&#72;&#70;'; break;
+		        case 'DKK': return '&#107;&#114;'; break;
+		        case 'NOK': return '&#107;&#114;'; break;
+		        case 'SEK': return '&#107;&#114;'; break;
+		        default: return '&#163;'; break;
+		    }
+		}
+		
+		/**
+		 * get_rgba_from_hex
+		 *
+		 * @author G.Maccario <g_maccario@hotmail.com>
+		 * @return string
+		 */
+		public function get_rgba_from_hex( ?string $hex ) : string
+		{
+		    /*list($r, $g, $b) = array_map( 'hexdec', str_split( $hex, 2 ));*/
+		    if( $hex )
+		    {
+		        $split = str_split( $hex, 2);
+		        
+		        $r = hexdec( ( $split[0] ) ? $split[0] : '00' );
+		        $g = hexdec( ( $split[1] ) ? $split[1] : '00' );
+		        $b = hexdec( ( $split[2] ) ? $split[2] : '00' );
+		        
+		        return sprintf( 'rgba(%s, %s, %s, 0.8)', $r, $g, $b );
+		    }
+		    
+		    return '';
 		}
 	}
 }

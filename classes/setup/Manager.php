@@ -1,11 +1,11 @@
 <?php
 
-namespace DVNWPF\Setup\Classes;
+namespace UMC\Setup\Classes;
 
-use DVNWPF\General\Classes\Basic;
-use DVNWPF\Controller\Classes\iController;
+use UMC\General\Classes\Basic;
+use UMC\Controller\Classes\iController;
 
-if(!interface_exists('DVNWPF\Setup\Classes\iManager'))
+if(!interface_exists('UMC\Setup\Classes\iManager'))
 {
     interface iManager
     {
@@ -13,7 +13,7 @@ if(!interface_exists('DVNWPF\Setup\Classes\iManager'))
     }
 }
 
-if(!class_exists('\DVNWPF\Setup\Classes\Controller'))
+if(!class_exists('\UMC\Setup\Classes\Controller'))
 {
     /**
      * @name Manager
@@ -67,10 +67,10 @@ if(!class_exists('\DVNWPF\Setup\Classes\Controller'))
                 
                 if($enqueueType == 'js')
                 {
-                    wp_enqueue_script( 'devon_wpf-frontend-js-' . $basename[count($basename) - 1], $additional, array( 'jquery' ), null, true );
+                    wp_enqueue_script( 'ultimate_mortgage_calculator-frontend-js-' . $basename[count($basename) - 1], $additional, array( 'jquery' ), null, true );
                 }
                 else {
-                    wp_enqueue_style( 'devon_wpf-admin-frontend-css-' . $basename[count($basename) - 1], $additional);
+                    wp_enqueue_style( 'ultimate_mortgage_calculator-admin-frontend-css-' . $basename[count($basename) - 1], $additional);
                 }
                 
             }, $additionals);

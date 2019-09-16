@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use DVNWPF\General\Classes\Common;
-use DVNWPF\Controller\Classes\Backend;
+use UMC\General\Classes\Common;
+use UMC\Controller\Classes\Backend;
 
 require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 

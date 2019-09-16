@@ -1,8 +1,8 @@
 <?php
 
-namespace DVNWPF\General\Classes;
+namespace UMC\General\Classes;
 
-if(!interface_exists('DVNWPF\General\Classes\iBasic'))
+if(!interface_exists('UMC\General\Classes\iBasic'))
 {
     interface iBasic
     {
@@ -10,7 +10,7 @@ if(!interface_exists('DVNWPF\General\Classes\iBasic'))
     }
 }
 
-if( !class_exists('\DVNWPF\General\Classes\Basic'))
+if( !class_exists('\UMC\General\Classes\Basic'))
 {    
     /**
      * @name Basic

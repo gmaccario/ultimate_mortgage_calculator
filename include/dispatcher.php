@@ -6,13 +6,13 @@
  * @author G.Maccario <g_maccario@hotmail.com> 
  */
 
-use DVNWPF\General\Classes\Common;
-use DVNWPF\Controller\Classes\Backend;
-use DVNWPF\Controller\Classes\Frontend;
-use DVNWPF\Setup\Classes\FrontendManager;
-use DVNWPF\Setup\Classes\BackendManager;
-use DVNWPF\Setup\Classes\AjaxLoader;
-use DVNWPF\Setup\Classes\Loader;
+use UMC\General\Classes\Common;
+use UMC\Controller\Classes\Backend;
+use UMC\Controller\Classes\Frontend;
+use UMC\Setup\Classes\FrontendManager;
+use UMC\Setup\Classes\BackendManager;
+use UMC\Setup\Classes\AjaxLoader;
+use UMC\Setup\Classes\Loader;
 
 $common = new Common();
 

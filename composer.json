@@ -1,0 +1,12 @@
+{
+	"autoload": {
+		"psr-4": {
+			"DVNWPF\\Controller\\Classes\\": "classes/controllers/",
+			"DVNWPF\\General\\Classes\\": "classes/general/",
+			"DVNWPF\\Setup\\Classes\\": "classes/setup/"
+		}
+	},
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    }
+}

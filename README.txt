@@ -34,7 +34,7 @@ Ultimate Mortgage Calculator provides you a shortcode to add your calculator in 
 
 == Change log ==
 == 1.5 ==
-* Compatible with 7.0 (Linting)
+* Compatible with PHP 7.0 (Linting)
 * General improvement
 * Skeleton Plugin replaced with Devon WPF
 == 1.0 ==

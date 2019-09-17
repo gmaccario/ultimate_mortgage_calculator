@@ -8,17 +8,17 @@ if(!interface_exists('UMC\General\Classes\iCommon'))
 {
     interface iCommon
     {
-        public function getConfig() : ?array;
+        public function getConfig() : array;
         public function printMyLastQuery() : string;
         public function checkDependencies() : bool;
         public function getNameClass(Basic $object) : string;
-        public function renderView(iController $controller, string $view, array $params) : ?string;
+        public function renderView(iController $controller, string $view, array $params) : string;
         public function getConstant(string $sz_supposed_constant = '') : string;
-        public function errorNoticeDependency() : void;
+        public function errorNoticeDependency();
         public function get_currency_entity( string $currency_symbol ) : string;
         public function get_rgba_from_hex( string $hex ) : string;
-        //public function uploadFile(string $dir = '', array $f = []) : ?bool;
-        //public function uploadFiles(string $dir = '', array $f = []) : ?bool;
+        //public function uploadFile(string $dir = '', array $f = []) : bool;
+        //public function uploadFiles(string $dir = '', array $f = []) : bool;
     }
 }
 
@@ -102,9 +102,9 @@ if(!class_exists('\General\Classes\Common'))
 		 * @name getConfig
 		 *
 		 * @author G.Maccario <g_maccario@hotmail.com>
-		 * @return ?array
+		 * @return array
 		 */
-		public function getConfig() : ?array
+		public function getConfig() : array
 		{
 		    return $this->config;
 		}
@@ -167,9 +167,9 @@ if(!class_exists('\General\Classes\Common'))
 		 * @param array $params
 		 *
 		 * @author G.Maccario <g_maccario@hotmail.com>
-		 * @return ?string
+		 * @return string
 		 */
-		public function renderView(iController $controller, string $view, array $params) : ?string
+		public function renderView(iController $controller, string $view, array $params) : string
 		{			
 			/* Extract attributes/values of the object to convert them into single variables */
 			extract($params);
@@ -196,7 +196,7 @@ if(!class_exists('\General\Classes\Common'))
 					break;
 			}
 			
-			return null;
+			return '';
 		}
 		
 		/**
@@ -236,9 +236,9 @@ if(!class_exists('\General\Classes\Common'))
 		 * @param array $files
 		 *
 		 * @author G.Maccario <g_maccario@hotmail.com>
-		 * @return ?bool
+		 * @return bool
 		 */
-		/*public function uploadFile(string $path = '', array $files = []) : ?bool
+		/*public function uploadFile(string $path = '', array $files = []) : bool
 		{
 		    if( !empty( $files[ 'name' ]))
 			{
@@ -267,9 +267,9 @@ if(!class_exists('\General\Classes\Common'))
 		 * @param array $files
 		 *
 		 * @author G.Maccario <g_maccario@hotmail.com>
-		 * @return ?bool
+		 * @return bool
 		 */
-		/*public function uploadFiles(string $path = '', array $files = []) : ?bool
+		/*public function uploadFiles(string $path = '', array $files = []) : bool
 		{
 		    if(count($files['name']) > 0)
 			{
@@ -305,7 +305,7 @@ if(!class_exists('\General\Classes\Common'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function errorNoticeDependency() : void
+		public function errorNoticeDependency()
 		{
 		    $error = sprintf("Missing Dependency! %s needs %s in order to work correctly.", ULTIMATE_MORTGAGE_CALCULATOR_BASENAME, $this->missing_dependency);
 		    
@@ -358,7 +358,7 @@ if(!class_exists('\General\Classes\Common'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return string
 		 */
-		public function get_currency_entity( ?string $currency_symbol ) : string
+		public function get_currency_entity( string $currency_symbol ) : string
 		{
 		    switch( $currency_symbol )
 		    {
@@ -381,7 +381,7 @@ if(!class_exists('\General\Classes\Common'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return string
 		 */
-		public function get_rgba_from_hex( ?string $hex ) : string
+		public function get_rgba_from_hex( string $hex ) : string
 		{
 		    /*list($r, $g, $b) = array_map( 'hexdec', str_split( $hex, 2 ));*/
 		    if( $hex )

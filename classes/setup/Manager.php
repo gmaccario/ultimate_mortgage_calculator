@@ -9,7 +9,7 @@ if(!interface_exists('UMC\Setup\Classes\iManager'))
 {
     interface iManager
     {
-        public function setConfig() : void;
+        public function setConfig();
     }
 }
 
@@ -46,7 +46,7 @@ if(!class_exists('\UMC\Setup\Classes\Controller'))
          * @author G.Maccario <g_maccario@hotmail.com>
          * @return void
          */
-        public function setConfig() : void
+        public function setConfig()
         {
             $this->config = $this->controller->getCommon()->getConfig();
         }
@@ -60,7 +60,7 @@ if(!class_exists('\UMC\Setup\Classes\Controller'))
          * @author G.Maccario <g_maccario@hotmail.com>
          * @return void
          */
-        protected function enqueueAdditionalStaticFiles(array $additionals, string $enqueueType) : void
+        protected function enqueueAdditionalStaticFiles(array $additionals, string $enqueueType)
         {
             array_map(function($additional) use($enqueueType){
                 $basename = explode('/', $additional);

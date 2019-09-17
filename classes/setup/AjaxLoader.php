@@ -9,8 +9,8 @@ if(!interface_exists('UMC\Setup\Classes\iAjaxLoader'))
 {
     interface iAjaxLoader
     {
-        public function setController(Controller $controller) : void;
-        public function registerAjaxCalls() : void;
+        public function setController(Controller $controller);
+        public function registerAjaxCalls();
     }
 }
 
@@ -46,7 +46,7 @@ if( !class_exists('\UMC\Setup\Classes\AjaxLoader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return
 		 */
-		public function setController(Controller $controller) : void
+		public function setController(Controller $controller)
 		{
 		    $this->controller = $controller;
 		}
@@ -57,7 +57,7 @@ if( !class_exists('\UMC\Setup\Classes\AjaxLoader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return
 		 */
-		public function registerAjaxCalls() : void
+		public function registerAjaxCalls()
 		{		    
 			/* 1. register AJAX API from the config */
 		    $array_config = $this->controller->getCommon()->getConfig();

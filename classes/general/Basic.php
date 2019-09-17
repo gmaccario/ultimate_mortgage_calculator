@@ -6,7 +6,7 @@ if(!interface_exists('UMC\General\Classes\iBasic'))
 {
     interface iBasic
     {
-        public function debugArray(array $data = [], bool $die = false) : void;
+        public function debugArray(array $data = [], bool $die = false);
     }
 }
 
@@ -39,7 +39,7 @@ if( !class_exists('\UMC\General\Classes\Basic'))
 		 * 
 		 * @return void
 		 */
-		public function debugArray(array $data = [], bool $die = false) : void
+		public function debugArray(array $data = [], bool $die = false)
 		{
 			echo "<pre>";
 			print_r($data);

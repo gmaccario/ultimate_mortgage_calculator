@@ -8,7 +8,7 @@ if(!interface_exists('UMC\Controllers\Classes\iFrontend'))
 {
     interface iFrontend
     {
-        public function get_mortgage_shortcode() : ?string;
+        public function get_mortgage_shortcode() : string;
         public function get_mortgage_calculator_results() : string;
     }
 }
@@ -41,10 +41,10 @@ if(!class_exists('\UMC\Controllers\Classes\Frontend'))
 		 * get_mortgage_shortcode
 		 *
 		 * @author G.Maccario <g_maccario@hotmail.com>
-		 * @return ?string
+		 * @return string
 		 * 
 		 */
-		public function get_mortgage_shortcode() : ?string
+		public function get_mortgage_shortcode() : string
 		{
 		    $this->params['action'] = null;
 			

@@ -8,9 +8,9 @@ if(!interface_exists('UMC\Controllers\Classes\iBackend'))
 {
     interface iBackend
     {
-        public function configuration() : void;
-        public function displayTabWelcome() : void;
-        public function displayTabConfiguration() : void;
+        public function configuration();
+        public function displayTabWelcome();
+        public function displayTabConfiguration();
     }
 }
 
@@ -84,7 +84,7 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function configuration() : void
+		public function configuration()
 		{
 			/*
 			 * GET VALUES FROM POST
@@ -154,7 +154,7 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function displayTabWelcome() : void
+		public function displayTabWelcome()
 		{
 		    ?>
 		    <h3><?php echo _e( "Ultimate Mortgage Calculator provides you a shortcode to add your calculator in your WP Posts or Pages.", ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></h3>
@@ -195,7 +195,7 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function displayTabConfiguration() : void
+		public function displayTabConfiguration()
 		{
 		    ?>
     		    <div class="input choose_currency">

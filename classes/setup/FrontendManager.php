@@ -14,8 +14,8 @@ if(!interface_exists('UMC\Setup\Classes\iFrontendManager'))
 {
     interface iFrontendManager
     {
-        public function frontendEnqueue() : void;
-        public function setAjaxurl() : void;
+        public function frontendEnqueue();
+        public function setAjaxurl();
     }
 }
 
@@ -42,7 +42,7 @@ if(!class_exists('\UMC\Setup\Classes\FrontendManager'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function frontendEnqueue() : void
+		public function frontendEnqueue()
 		{
 			/*
 			 * Add additional frontend css/js
@@ -66,7 +66,7 @@ if(!class_exists('\UMC\Setup\Classes\FrontendManager'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function setAjaxurl() : void
+		public function setAjaxurl()
 		{
 			?>
 			<script>

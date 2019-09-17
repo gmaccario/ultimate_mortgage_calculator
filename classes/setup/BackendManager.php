@@ -15,10 +15,10 @@ if(!interface_exists('UMC\Setup\Classes\iBackendManager'))
     interface iBackendManager
     {
         public function getPages() : array;
-        public function backendEnqueue() : void;
-        public function customActionLinks(array $links) : ?array;
-        public function backendMenu() : void;
-        public function whenUltimateMortgageCalculatorStart() : void;
+        public function backendEnqueue();
+        public function customActionLinks(array $links) : array;
+        public function backendMenu();
+        public function whenUltimateMortgageCalculatorStart();
     }
 }
 
@@ -62,7 +62,7 @@ if( !class_exists('\UMC\Setup\Classes\BackendManager'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function backendEnqueue() : void
+		public function backendEnqueue()
 		{
 			/*
 			 * Add additional frontend css/js 
@@ -86,9 +86,9 @@ if( !class_exists('\UMC\Setup\Classes\BackendManager'))
 		 * @param array $links
 		 *
 		 * @author G.Maccario <g_maccario@hotmail.com>
-		 * @return ?array
+		 * @return array
 		 */
-		public function customActionLinks(array $links) : ?array
+		public function customActionLinks(array $links) : array
 		{
 		    $pages = $this->getPages();
 		    
@@ -111,7 +111,7 @@ if( !class_exists('\UMC\Setup\Classes\BackendManager'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function backendMenu() : void
+		public function backendMenu()
 		{
 		    $pages = $this->getPages();
 		    
@@ -154,7 +154,7 @@ if( !class_exists('\UMC\Setup\Classes\BackendManager'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function whenUltimateMortgageCalculatorStart() : void
+		public function whenUltimateMortgageCalculatorStart()
 		{
 			register_setting( ULTIMATE_MORTGAGE_CALCULATOR_OPT_SETTINGS_FIELDS, ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEBUG );
 			

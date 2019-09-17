@@ -2,7 +2,7 @@
 Contributors: Giuseppe Maccario
 Requires at least: 4.8
 Tested up to: 5.2
-Requires PHP: 5.4 or 7.1
+Requires PHP: 7.0
 Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Ultimate Mortgage Calculator provides you a shortcode to add your calculator in your WP Posts or Pages.
 
 == Description ==
-Ultimate Mortgage Calculator provides you a shortcode to add your calculator in your WP Posts or Pages. Ultimate Mortgage Calculator is a white label solution, you can customize the layout using your theme child css or adding Bootstrap 3.3.7 directly through the backend of the plugin. It's based on Skeleton Plugin v.1.8.1.
+Ultimate Mortgage Calculator provides you a shortcode to add your calculator in your WP Posts or Pages. Ultimate Mortgage Calculator is a white label solution, you can customize the layout using your theme child css or adding Bootstrap 3.3.7 directly through the backend of the plugin.
 
 == Installation ==
 * Install a Plugin using WordPress Plugin Search
@@ -21,7 +21,7 @@ Ultimate Mortgage Calculator provides you a shortcode to add your calculator in 
 * Save the parameters for the first time
 
 == Design ==
-* Use these rules inside your child theme in order apply colors.
+* Use these rules inside your child theme in order to apply colors.
 
 .ultimate_mortgage_calculator_wrapper h3 {}
 .ultimate_mortgage_calculator_wrapper #chart {}
@@ -34,6 +34,7 @@ Ultimate Mortgage Calculator provides you a shortcode to add your calculator in 
 
 == Change log ==
 == 1.5 ==
+* Compatible with 7.0 (Linting)
 * General improvement
 * Skeleton Plugin replaced with Devon WPF
 == 1.0 ==

@@ -8,9 +8,9 @@ if(!interface_exists('UMC\Setup\Classes\iLoader'))
 {
     interface iLoader
     {
-        public function setController(Controller $controller) : void;
-        public function setControllerManager(Manager $manager) : void;
-        public function loadFeatures() : void;
+        public function setController(Controller $controller);
+        public function setControllerManager(Manager $manager);
+        public function loadFeatures();
         /* Methods you declare in Interfaces ought to be public. */
     }
 }
@@ -45,7 +45,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function setController(Controller $controller) : void
+		public function setController(Controller $controller)
 		{
 		    $this->controller = $controller;
 		}
@@ -59,7 +59,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function setControllerManager(Manager $manager) : void
+		public function setControllerManager(Manager $manager)
 		{
 		    $this->controllerManager = $manager;
 		}
@@ -70,7 +70,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return
 		 */
-		public function publicInit() : void
+		public function publicInit()
 		{
 		    
 		}
@@ -81,7 +81,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return
 		 */
-		public function adminInit() : void
+		public function adminInit()
 		{
 		    $this->controllerManager->whenUltimateMortgageCalculatorStart();
 		}
@@ -92,7 +92,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		public function loadFeatures() : void
+		public function loadFeatures()
 		{
 		    if(strtolower($this->controller->getCommon()->getNameClass($this->controller)) != 'backend')
 		    {
@@ -109,7 +109,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		protected function loadBackendFeatures() : void
+		protected function loadBackendFeatures()
 		{
 		    add_action( 'admin_init', array($this, 'adminInit'));
 		    
@@ -127,7 +127,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		protected function loadFrontendFeatures() : void
+		protected function loadFrontendFeatures()
 		{
 		    add_action( 'init', array($this, 'publicInit' ));
 		    
@@ -143,7 +143,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		protected function automaticLoadingOfHooksFiltersAndShortcodes() : void
+		protected function automaticLoadingOfHooksFiltersAndShortcodes()
 		{
 		    $common = $this->controller->getCommon();
 		    $config = $common->getConfig();
@@ -167,7 +167,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		protected function loadingHooks(array $hooks) : void
+		protected function loadingHooks(array $hooks)
 		{
 		    foreach( $hooks as $hook => $function )
 			{
@@ -183,7 +183,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		protected function loadingFilters(array $filters) : void
+		protected function loadingFilters(array $filters)
 		{
 			foreach( $filters as $filter => $function )
 			{
@@ -199,7 +199,7 @@ if(!class_exists('\UMC\Setup\Classes\Loader'))
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * @return void
 		 */
-		protected function loadingShortcodes(array $shortcodes) : void
+		protected function loadingShortcodes(array $shortcodes)
 		{
 			foreach( $shortcodes as $shortcode => $function )
 			{

@@ -10,7 +10,7 @@ if(!interface_exists('UMC\Controller\Classes\iController'))
     interface iController
     {
         public function getCommon() : Common;
-        public function renderTemplate(string $template = '') : ?string;
+        public function renderTemplate(string $template = '') : string;
     }
 }
 
@@ -58,9 +58,9 @@ if(!class_exists('\UMC\Controllers\Classes\Controller'))
 		 *
 		 * @author G.Maccario <g_maccario@hotmail.com>
 		 * 
-		 * @return ?string
+		 * @return string
 		 */
-		public function renderTemplate(string $template = '') : ?string
+		public function renderTemplate(string $template = '') : string
 		{
 		    if($template == '')
 		    {

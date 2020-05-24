@@ -6,7 +6,5 @@
 			"UMC\\Setup\\Classes\\": "classes/setup/"
 		}
 	},
-    "require-dev": {
-        "phpunit/phpunit": "^7"
-    }
+    "require-dev": {}
 }

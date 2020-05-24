@@ -9,7 +9,7 @@ Author URI: https://www.giuseppemaccario.com
 License: GPL2
 */
 
-define( 'ULTIMATE_MORTGAGE_CALCULATOR_ENV', 'dev' );
+define( 'ULTIMATE_MORTGAGE_CALCULATOR_ENV', 'prod' );
 
 if( ULTIMATE_MORTGAGE_CALCULATOR_ENV == 'dev' )
 {

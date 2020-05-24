@@ -24,7 +24,7 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
      * @return
      */
     class Backend extends Controller implements iBackend
-	{		
+	{
 	    /**
 		 * @name __construct
 		 *
@@ -37,7 +37,7 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 	    {
 	        parent::__construct($common);
 	    }
-		
+
 	    /**
 	     * @name getHTMLTabs
 	     *
@@ -47,7 +47,7 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 	    protected function getHTMLTabs() : string
 	    {
 	        $links = '';
-	        
+
 	        if( $this->params['pages'] )
 	        {
 	            foreach( $this->params['pages'] as $page )
@@ -57,13 +57,13 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 	                    $tabs = $page[ 'attributes' ][ 'tabs' ];
 	                    foreach( $tabs as $tab )
 	                    {
-	                        if(empty($links)) 
+	                        if(empty($links))
 	                        {
 	                            $active = ( $this->params['active_tab'] == $tab[ 'slug' ] || !$this->params['active_tab'] ) ? 'nav-tab-active' : '';
 	                        } else {
 	                            $active = ( $this->params['active_tab'] == $tab[ 'slug' ] ) ? 'nav-tab-active' : '';
 	                        }
-	                        
+
 	                        /**
 	                         * @todo might be better!
 	                         */
@@ -74,10 +74,10 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 		            }
 		        }
 		    }
-		    
+
 		    return $links;
 	    }
-	    
+
 		/**
 		 * @name configuration
 		 *
@@ -93,7 +93,7 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 			$this->params['action'] = filter_input( INPUT_POST, 'action', FILTER_SANITIZE_STRING );
 			$this->params['active_page'] = filter_input( INPUT_GET, 'page', FILTER_SANITIZE_STRING );
 			$this->params['active_tab'] = filter_input( INPUT_GET, 'tab', FILTER_SANITIZE_STRING );
-			
+
 			$this->params['pages'] = $this->common->getConfig()[ 'features' ][ 'backend' ][ 'pages' ];
 			$this->params['tabs'] = $this->getHTMLTabs();
 			/*
@@ -107,27 +107,27 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 			     * *********************************************
 			     */
 			    $this->params['value_debug'] = get_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEBUG );
-			    
+
 			    $this->params['currency'] = get_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_CURRENCY );
 			    $this->params['country'] = get_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_COUNTRY );
 			    $this->params['hex_color'] = get_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_HEX_LINE_COLOR );
 			    $this->params['mortgage_start_value'] = get_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEFAULT_MORTGAGE_START_VALUE );
 			    $this->params['add_bootstrap'] = get_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_ADD_BOOTSTRAP );
-			    
+
 			} else {
-				
+
 				/*
 				 * GET VALUES FROM POST
 				 * *********************************************
 				 */
 				$this->params['value_debug'] = filter_input( INPUT_POST, ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEBUG, FILTER_SANITIZE_NUMBER_INT );
-				
+
 				$this->params['currency'] = filter_input( INPUT_POST, ULTIMATE_MORTGAGE_CALCULATOR_OPT_CURRENCY, FILTER_SANITIZE_STRING );
 				$this->params['country'] = filter_input( INPUT_POST, ULTIMATE_MORTGAGE_CALCULATOR_OPT_COUNTRY, FILTER_SANITIZE_STRING );
 				$this->params['hex_color'] = filter_input( INPUT_POST, ULTIMATE_MORTGAGE_CALCULATOR_OPT_HEX_LINE_COLOR, FILTER_SANITIZE_STRING );
 				$this->params['mortgage_start_value'] = filter_input( INPUT_POST, ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEFAULT_MORTGAGE_START_VALUE, FILTER_SANITIZE_NUMBER_INT );
 				$this->params['add_bootstrap'] = filter_input( INPUT_POST, ULTIMATE_MORTGAGE_CALCULATOR_OPT_ADD_BOOTSTRAP, FILTER_SANITIZE_NUMBER_INT );
-				
+
 				/*
 				 * UPDATE NEW VALUES
 				 * *********************************************
@@ -139,15 +139,15 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 				update_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEFAULT_MORTGAGE_START_VALUE, $this->params['mortgage_start_value'] );
 				update_option( ULTIMATE_MORTGAGE_CALCULATOR_OPT_ADD_BOOTSTRAP, $this->params['add_bootstrap'] );
 			}
-			
+
 			$this->params['available_shortcodes'] = $this->common->getConfig()['features']['frontend']['shortcodes'];
-			
+
 			/*
 			 * Include Template
 			 */
 			$this->renderTemplate('configuration');
 		}
-		
+
 		/**
 		 * @name displayTabWelcome
 		 *
@@ -158,7 +158,7 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
 		{
 		    ?>
 		    <h3><?php echo _e( "Ultimate Mortgage Calculator provides you a shortcode to add your calculator in your WP Posts or Pages.", ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></h3>
-        	
+
         	<?php if( count( $this->params['available_shortcodes'] ) > 0 ): ?>
             	<div class="shortcodes">
             		<table>
@@ -170,25 +170,25 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
                             </tr>
                             <tr>
                                 <th><?php echo _e( "Shortcode", ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></th>
-                                <th><?php echo _e( "Frontend Method", ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></th>
+                                <!-- <th><?php //echo _e( "Frontend Method", ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></th> -->
                             </tr>
                         </thead>
                         <tbody>
                         	<?php foreach($this->params['available_shortcodes'] as $available_shortcode): ?>
                         		<tr>
                         			<?php foreach($available_shortcode as $shortcode => $method): ?>
-                                    	<td><?php echo $shortcode; ?></td>
-                                    	<td><?php echo $method; ?></td>
+                                    	<td>[<?php echo $shortcode; ?>]</td>
+                                    	<!-- <td><?php //echo $method; ?></td> -->
                                     <?php endforeach; ?>
                                 </tr>
             				<?php endforeach; ?>
                         </tbody>
                      </table>
             	</div>
-        	<?php 
+        	<?php
         	endif;
 		}
-		
+
 		/**
 		 * @name displayTabConfiguration
 		 *
@@ -216,7 +216,7 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
         				</select>
         			</div>
         		</div>
-        
+
         		<div class="input choose_language">
         			<h4><?php echo __( 'Choose Country', ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></h4>
         			<div class="element">
@@ -261,21 +261,21 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
         				</select>
         			</div>
         		</div>
-        
+
         		<div class="input hex_color">
         			<h4><?php echo __( 'Line chart color (hex)', ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></h4>
         			<div class="element">
         				<input name="<?php echo ULTIMATE_MORTGAGE_CALCULATOR_OPT_HEX_LINE_COLOR; ?>" type="text" placeholder="ffffff" class="form-control" value="<?php echo ( !empty( $this->params['hex_color'] )) ? $this->params['hex_color'] : 'f4ab4c'; ?>" />
         			</div>
         		</div>
-        
+
         		<div class="input mortgage_default_start_value">
         			<h4><?php echo __( 'Mortgage Default start value', ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></h4>
         			<div class="element">
         				<input name="<?php echo ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEFAULT_MORTGAGE_START_VALUE; ?>" type="number" min="15000" placeholder="" aria-describedby="mortgage-addon" class="form-control" step="1000" value="<?php echo ( !empty( $this->params['mortgage_start_value'] )) ? $this->params['mortgage_start_value'] : 280000; ?>" />
         			</div>
         		</div>
-        
+
         		<div class="input add_beauty_layout">
         			<h4><?php echo __( 'Add beauty layout', ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></h4>
         			<div class="element">
@@ -287,9 +287,9 @@ if(!class_exists('\UMC\Controllers\Classes\Backend'))
         				<label for="add_boostrap_0" class="radio"><?php echo __( 'No', ULTIMATE_MORTGAGE_CALCULATOR_L10N ); ?></label>
         			</div>
         		</div>
-        
+
         		<input type="hidden" value="0" name="<?php echo ULTIMATE_MORTGAGE_CALCULATOR_OPT_DEBUG; ?>" />
-		    <?php 
+		    <?php
 		}
 	}
 }

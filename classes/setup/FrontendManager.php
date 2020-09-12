@@ -44,20 +44,42 @@ if(!class_exists('\UMC\Setup\Classes\FrontendManager'))
 		 */
 		public function frontendEnqueue()
 		{
+			global $post;
 			/*
 			 * Add additional frontend css/js
 			 */
-			$additional_js = $this->config['features']['frontend']['additional_js'];
-			$additional_css = $this->config['features']['frontend']['additional_css'];
-			
-			$this->enqueueAdditionalStaticFiles($additional_js, 'js');
-			$this->enqueueAdditionalStaticFiles($additional_css, 'css');
-			
-			/*
-			 * Add basic static files
-			 */
-			wp_enqueue_style( 'ultimate_mortgage_calculator-frontend-css', sprintf( '%s%s', ULTIMATE_MORTGAGE_CALCULATOR_URL, '/assets/css/frontend.css' ), array(), '1.0' );
-			wp_enqueue_script( 'ultimate_mortgage_calculator-frontend-js', sprintf( '%s%s', ULTIMATE_MORTGAGE_CALCULATOR_URL, '/assets/js/frontend.js' ), array( 'jquery' ), '1.0', true );
+			$shortcodes = $this->config['features']['frontend']['shortcodes'];
+			$include = false;
+			foreach($shortcodes as $shortcode)
+			{
+				$keys = \array_keys($shortcode);
+				foreach($keys as $key)
+				{
+					if(has_shortcode($post->post_content, $key))
+					{
+						$include = true;
+						
+						break 2;
+					}
+				}
+			}
+			if($include)
+			{
+				/*
+				* Add additional frontend css/js
+				*/
+				$additional_js = $this->config['features']['frontend']['additional_js'];
+				$additional_css = $this->config['features']['frontend']['additional_css'];
+				
+				$this->enqueueAdditionalStaticFiles($additional_js, 'js');
+				$this->enqueueAdditionalStaticFiles($additional_css, 'css');
+				
+				/*
+				* Add basic static files
+				*/
+				wp_enqueue_style( 'ultimate_mortgage_calculator-frontend-css', sprintf( '%s%s', ULTIMATE_MORTGAGE_CALCULATOR_URL, '/assets/css/frontend.css' ), array(), '1.0' );
+				wp_enqueue_script( 'ultimate_mortgage_calculator-frontend-js', sprintf( '%s%s', ULTIMATE_MORTGAGE_CALCULATOR_URL, '/assets/js/frontend.js' ), array( 'jquery' ), '1.0', true );
+			}
 		}
 		
 		/**

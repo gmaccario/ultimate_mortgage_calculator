@@ -6,7 +6,6 @@
 					<h3><?php echo __( 'What will my monthly mortgage payments be?', 'mortgage_calculator' ); ?></h3>
 				</div>
 			</div>
-
 			<form id="mortgage_calculator" class="mortgage" action="#" method="get">
 				<input type="hidden" name="country_code" value="<?php echo $country; ?>" />
 				<input type="hidden" name="rgba_color" value="<?php echo $rgba_color; ?>" />

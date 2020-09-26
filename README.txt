@@ -1,9 +1,9 @@
 === Ultimate Mortgage Calculator ===
-Contributors: Giuseppe Maccario
+Contributors: gmaccario
 Requires at least: 4.8
 Tested up to: 5.5.1
 Requires PHP: 7.2
-Stable tag: 1.6
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,9 @@ Ultimate Mortgage Calculator provides you a shortcode to add your calculator in 
 .ultimate_mortgage_calculator_wrapper .mortgage_calculator_results h3 {}
 
 == Change log ==
+== 1.6.1 ==
+* Bug fix
+
 == 1.6 ==
 * Load assets when needed
 * Minor changes

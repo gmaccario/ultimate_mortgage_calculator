@@ -3,15 +3,13 @@
 Plugin Name: Ultimate Mortgage Calculator
 Plugin URI: https://www.giuseppemaccario.com/mortgage-calculator/
 Description: Ultimate Mortgage Calculator provides you a shortcode to add your calculator in your WP Posts or Pages.
-Version: 1.6
+Version: 1.6.1
 Author: Giuseppe Maccario
 Author URI: https://www.giuseppemaccario.com
 License: GPL2
 */
 
-define( 'ULTIMATE_MORTGAGE_CALCULATOR_ENV', 'prod' );
-
-if( ULTIMATE_MORTGAGE_CALCULATOR_ENV == 'dev' )
+if( defined( WP_DEBUG ) && WP_DEBUG )
 {
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
